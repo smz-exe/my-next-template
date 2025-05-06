@@ -1,0 +1,27 @@
+{
+    "name": "Next.js",
+    "build": {
+        "dockerfile": "../Dockerfile"
+    },
+    "forwardPorts": [3000],
+    "containerEnv": {
+        "CI": "true"
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "chat.tools.autoApprove": true, // Enable auto-approve for Copilot chat tools
+                "remote.restoreForwardedPorts": false,
+                "remote.autoForwardPortsSource": "output"
+            },
+            "extensions": [
+                "bradlc.vscode-tailwindcss",
+                "esbenp.prettier-vscode",
+                "dbaeumer.vscode-eslint",
+                "ms-vscode.vscode-typescript-next",
+                "ms-playwright.playwright"
+            ]
+        }
+    },
+    "postCreateCommand": "pnpm config set store-dir /root/.pnpm-store && pnpm install && pnpm exec playwright install --with-deps"
+}
